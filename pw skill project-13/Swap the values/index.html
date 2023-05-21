@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Swap Values</title>
+    <script>
+        function swapValues() {
+            // Get the input values
+            var x = parseInt(document.getElementById('xValue').value);
+            var y = parseInt(document.getElementById('yValue').value);
+
+            // Swap the values using destructuring assignment
+            [x, y] = [y, x];
+
+            // Display the swapped values
+            var result = document.getElementById('result');
+            result.innerHTML = `[${x}, ${y}]`;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Swap Values</h1>
+    <p>Enter two values:</p>
+    <label for="xValue">x:</label>
+    <input type="number" id="xValue"><br>
+    <label for="yValue">y:</label>
+    <input type="number" id="yValue"><br>
+    <button onclick="swapValues()">Swap Values</button>
+    <p>Swapped values:</p>
+    <div id="result"></div>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Find Min and Max</title>
+    <script>
+        function findMinMax() {
+            // Get the input array of numbers
+            var inputArray = document.getElementById('inputArray').value;
+
+            // Parse the input array into an actual array of numbers
+            var numbers = JSON.parse(inputArray);
+
+            // Find the maximum and minimum values using spread operator and Math methods
+            var max = Math.max(...numbers);
+            var min = Math.min(...numbers);
+
+            // Create an object with the maximum and minimum values
+            var resultObj = { max: max, min: min };
+
+            // Display the maximum and minimum values
+            var result = document.getElementById('result');
+            result.innerHTML = JSON.stringify(resultObj);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Find Min and Max</h1>
+    <p>Enter an array of numbers:</p>
+    <input type="text" id="inputArray"><br>
+    <button onclick="findMinMax()">Find Min and Max</button>
+    <p>Result:</p>
+    <div id="result"></div>
+</body>
+
+</html>

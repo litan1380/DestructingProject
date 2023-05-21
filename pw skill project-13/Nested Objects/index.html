@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Extract Name and Street</title>
+    <script>
+        function extractProperties() {
+            // Get the input object representing a person
+            var inputObject = document.getElementById('inputObject').value;
+
+            // Parse the input object into an actual JavaScript object
+            var person = JSON.parse(inputObject);
+
+            // Extract the name and street properties using object destructuring
+            var { name, address: { street } } = person;
+
+            // Create an object with the extracted properties
+            var extractedProperties = { name: name, street: street };
+
+            // Display the extracted properties
+            var result = document.getElementById('result');
+            result.innerHTML = JSON.stringify(extractedProperties);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Extract Name and Street</h1>
+    <p>Enter an object representing a person:</p>
+    <textarea id="inputObject" rows="5" cols="50"></textarea><br>
+    <button onclick="extractProperties()">Extract Properties</button>
+    <p>Extracted properties:</p>
+    <div id="result"></div>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Word Count Generator</title>
+    <script>
+        function countWords() {
+            // Get the input text
+            var inputText = document.getElementById('inputText').value;
+
+            // Remove leading/trailing spaces and convert to lowercase
+            var cleanedText = inputText.trim().toLowerCase();
+
+            // Split the text into an array of words
+            var words = cleanedText.split(/\s+/);
+
+            // Create a map to store word counts
+            var wordCountMap = new Map();
+
+            // Count the occurrences of each word
+            for (var i = 0; i < words.length; i++) {
+                var word = words[i];
+                if (wordCountMap.has(word)) {
+                    // Increment the count if the word already exists in the map
+                    wordCountMap.set(word, wordCountMap.get(word) + 1);
+                } else {
+                    // Initialize the count to 1 if it's the first occurrence of the word
+                    wordCountMap.set(word, 1);
+                }
+            }
+
+            // Display the word counts in a table
+            var table = document.getElementById('wordCountTable');
+            table.innerHTML = ''; // Clear existing table rows
+
+            wordCountMap.forEach(function (count, word) {
+                var row = table.insertRow(-1);
+                var wordCell = row.insertCell(0);
+                var countCell = row.insertCell(1);
+                wordCell.innerHTML = word;
+                countCell.innerHTML = count;
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Word Count Generator</h1>
+    <textarea id="inputText" rows="10" cols="50"></textarea><br>
+    <button onclick="countWords()">Count Words</button>
+    <table id="wordCountTable">
+        <tr>
+            <th>Word</th>
+            <th>Count</th>
+        </tr>
+    </table>
+</body>
+
+</html>
